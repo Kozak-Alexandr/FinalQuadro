@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1629396248 source:c:\users\lenovo\onedrive\Рабочий стол\dd\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1629732731 source:c:\users\lenovo\onedrive\Рабочий стол\square\main.c
+	"square_solve.h"
+
+1629734360 c:\users\lenovo\onedrive\Рабочий стол\square\square_solve.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

@@ -19,16 +19,16 @@ int main()
 {
    testQuadratic();
    /* double a  = NAN;
-    double b  = NAN;//live journal –¥–µ–¥–∞//sideof.lj.ru//
+    double b  = NAN;//live journal ‰Â‰‡//sideof.lj.ru//
     double c  = NAN;
     double x2 = NAN;
     double x1 = NAN;
     printf("a*x^2+b*x+c\n"
            "enter a b c: \n");
     int result = scanf ("%lg %lg %lg", &a, &b, &c);
-    if (result < 3) //—Å–∫–∞–Ω—Ñ –¥–µ—Ä–∂–∏—Ç –≤ –ø–∞–º—è—Ç–∏ 3 –∑–Ω–∞—á–µ–Ω–∏—è
+    if (result < 3) //ÒÍ‡ÌÙ ‰ÂÊËÚ ‚ Ô‡ÏˇÚË 3 ÁÌ‡˜ÂÌËˇ
     {
-        printf("Did your cat walk on the keyboard?\n");   //–≤ –º–µ–π–Ω
+        printf("Did your cat walk on the keyboard?\n");   //‚ ÏÂÈÌ
         //while(getchar() != '\n')
         //    printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
         return 0;
@@ -100,9 +100,9 @@ bool cmp_with_0(double u)
             if the equation has no roots
 */
 
-int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer –∑–∞–≥—É–≥–ª–∏—Ç—å
+int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer Á‡„Û„ÎËÚ¸
 {
-    // —à–æ —Ç–∞–∫–æ–µ –¥–µ—Ñ–∞–π–Ω—ã
+    // ¯Ó Ú‡ÍÓÂ ‰ÂÙ‡ÈÌ˚
     if(cmp_with_0(a))
     {
         if(cmp_with_0(b))
@@ -176,9 +176,9 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
 
         {
             int result = scanf ("%lg %lg %lg", &a, &b, &c);
-            if (result < 3) //—Å–∫–∞–Ω—Ñ –¥–µ—Ä–∂–∏—Ç –≤ –ø–∞–º—è—Ç–∏ 3 –∑–Ω–∞—á–µ–Ω–∏—è
+            if (result < 3) //ÒÍ‡ÌÙ ‰ÂÊËÚ ‚ Ô‡ÏˇÚË 3 ÁÌ‡˜ÂÌËˇ
             {
-                printf(" Did your cat walk on the keyboard?\n");   //–≤ –º–µ–π–Ω
+                printf(" Did your cat walk on the keyboard?\n");   //‚ ÏÂÈÌ
                 while(getchar() != '\n')
                 printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
             }
@@ -217,7 +217,7 @@ int testQuadratic()
     { -0.191584, -2.23699},           //6
     { 2, 0},                          //7
     { 0, 0},                          //8
-    { 0, 0}, //—á—ë                     //9
+    { 0, 0}, //˜∏                     //9
     { 0, -0.666667},                  //10
     { 0, 0},                          //11
     { -0.299533, -21.7005}            //12
@@ -244,7 +244,7 @@ int testQuadratic()
         double x1 = 0;
         double x2 = 0;
 
-        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //–∑–∞–¥–∞—é—Ç—Å—è –æ—Ç 0
+        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //Á‡‰‡˛ÚÒˇ ÓÚ 0
 
         if (numb[i][0] == NeedsTesting &&
             cmp_with_0 (x1 - solut[i][0]) &&

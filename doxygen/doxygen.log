@@ -1,0 +1,6 @@
+C:/Users/Lenovo/OneDrive/Рабочий стол/square/main.c:159: warning: argument '�' of command @param is not found in the argument list of check_for_junk_and_cats(double a, double b, double c)
+C:/Users/Lenovo/OneDrive/Рабочий стол/square/main.c:167: warning: The following parameters of check_for_junk_and_cats(double a, double b, double c) are not documented:
+  parameter 'c'
+C:/Users/Lenovo/OneDrive/Рабочий стол/square/main.c:86: warning: argument '�' of command @param is not found in the argument list of solve_square(double a, double b, double c, double *x1, double *x2)
+C:/Users/Lenovo/OneDrive/Рабочий стол/square/main.c:98: warning: The following parameters of solve_square(double a, double b, double c, double *x1, double *x2) are not documented:
+  parameter 'c'

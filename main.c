@@ -1,19 +1,24 @@
-#define EPSILON 0.00001
-#include "square_solve.h"
 #include <assert.h>
-//разбить на функции(ввод вывод и в мейне ничего, прочитатьпро .h файлы попробовать разбить на файлы
+
+#include "square_solve.h"
+
+#define EPSILON 0.00001
+
 enum NRoots_e {
-    INF_ROOTS =     4,
-    ONE_ROOTS =     1,
+    INF_ROOTS     = 4,
+    ONE_ROOTS     = 1,
     ONE_ROOTS_TWO = 5,
-    ZERO      =     6,
-    TWO_ROOTS =     2,
-    NO_ROOTS =      0,
+    ZERO          = 6,
+    TWO_ROOTS     = 2,
+    NO_ROOTS      = 0,
 };
+
+
+
 int main()
 {
-    int testQuadratic();
-    double a  = NAN;
+   testQuadratic();
+   /* double a  = NAN;
     double b  = NAN;//live journal деда//sideof.lj.ru//
     double c  = NAN;
     double x2 = NAN;
@@ -48,7 +53,7 @@ int main()
         case NO_ROOTS:
             printf(" No Solution\n");
             break;
-        case ONE_ROOTS:
+        case ONE_ROOTS:.
             printf(" x= %lg\n", x1 );
             printf(" haha");
             break;
@@ -65,13 +70,35 @@ int main()
             printf(" 0");
             break;
         }
-    }
+    }*/
 }
 
-int cmp_with_0(double u)
+//------------------------------------------------------------------------------
+
+/*!
+    \brief compares the parameter with zeros within the margin of error
+          returns true or false respectively
+    \param [in] u - the compared number,
+*/
+
+bool cmp_with_0(double u)
 {
     return fabs(u) < EPSILON;
 }
+
+
+/*!
+   \brief Finds the roots of a quadratic equation
+          of the form ax ^ 2 + bx + c = 0
+          and returns them in number.
+    \param[in] a      - coefficient before x ^ 2;
+    \param[in] b      - coefficient before x;
+    \param[in] c      - free member;
+    \param[in] x1, x2 - pointers to variables
+                        for the roots of the equation;
+    \warning x1 and x2 will not be initialized,
+            if the equation has no roots
+*/
 
 int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer загуглить
 {
@@ -113,9 +140,9 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
         }
         else
         {
-            if(discr == 0)//cmp_with_0
+            if(cmp_with_0(discr))//cmp_with_0
             {
-                if(c == 0)//cmp_with_0
+                if(cmp_with_0(c))//cmp_with_0
                 {
                    return ZERO;
                 }
@@ -133,6 +160,14 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
     }
     return 0;
 }
+/*!
+    \brief If entered, junk outputs a funny thing
+          and returns them in number.
+    \param [in] a - coefficient before x ^ 2;
+    \param [in] b - coefficient before x;
+    \param [in] c - free member;
+
+*/
  int check_for_junk_and_cats(double a, double b, double c)
  {
         int   ok = 0;
@@ -153,41 +188,74 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
             }
         }
  }
-                                                                                //3 массива для входных(коофициенты кв ур) данных
-int testQuadratic()                                                                     //еще 3 массива(один лдя числа корней + 2 для самих корней
+
+int testQuadratic()
 {
-double testo[12][6]=
+    double coof[12][3]=
     {
-    {1, 4, 1, -0.267949, -3.73205,2},           //1
-    {2, 7, 3, -0.5, -3,2},                      //2
-    {1, 4, 4, -0.5, 0, 1},                      //3
-    {5, 8, 3, -0.6, -0.1, 2},                     //4
-    {5, 15, 4, -0.295841, -2.70416, 2},         //5
-    {7, 17, 3, -0.191584, -2.23699, 2},         //6
-    {0, 4, -2, 2, 0, 1},                        //7
-    {1, 0, 0, 0, 0, 1},                         //8
-    {0, 1, 0, 0, 0, 1}, //чё                    //9
-    {3, 2, 0, 0, -0.666667, 2},                 //10
-    {1, 1, 1, 0, 0, 0},                         //11
-    {2, 44, 13, -0.299533, -21.7005, 2}         //12
+    {1, 4, 1},      //1
+    {2, 7, 3},      //2
+    {1, 4, 4},      //3
+    {5, 8, 3},      //4
+    {5, 15, 4},     //5
+    {7, 17, 3},     //6
+    {0, 4, -2},     //7
+    {1, 0, 0},      //8
+    {0, 1, 0},      //9
+    {3, 2, 0},      //10
+    {1, 1, 1},      //11
+    {2, 44, 13}     //12
     };
+
+    double solut[12][2]=
+    {
+    { -0.267949, -3.73205},           //1
+    { -0.5, -3},                      //2
+    { -0.5, 0},                       //3
+    { -0.6, -0.1},                    //4
+    { -0.295841, -2.70416},           //5
+    { -0.191584, -2.23699},           //6
+    { 2, 0},                          //7
+    { 0, 0},                          //8
+    { 0, 0}, //чё                     //9
+    { 0, -0.666667},                  //10
+    { 0, 0},                          //11
+    { -0.299533, -21.7005}            //12
+    };
+
+    int numb[12][1]=
+    {
+    {2},                      //1
+    {2},                      //2
+    {1},                      //3
+    {2},                      //4
+    {2},                      //5
+    {2},                      //6
+    {1},                      //7
+    {1},                      //8
+    {1},                      //9
+    {2},                      //10
+    {0},                      //11
+    {2}                       //12
+    };
+
     for(int i = 0; i < 12; i++)
     {
         double x1 = 0;
         double x2 = 0;
 
-        int NeedsTesting = solve_square (testo[i][0], testo[i][1], testo[i][2], &x1, &x2);
+        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //задаются от 0
 
-        if (testo[i][5] == NeedsTesting &&
-            cmp_with_0 (x1 - testo[i][3]) &&
-            cmp_with_0 (x2 - testo[i][4]))
+        if (numb[i][0] == NeedsTesting &&
+            cmp_with_0 (x1 - solut[i][0]) &&
+            cmp_with_0 (x2 - solut[i][1]))
             printf ("Test number %3d - CORRECT\n", i+1);
         else
         {
             printf ("Test number %lg ERROR\n", i+1);
-            printf ("Entern  b=%lg c=%lg\n", testo[i][0], testo[i][1], testo[i][2]);
-            printf ("Expected out: x1=%lg x2=%lg n_roots=%d\n", testo[i][3], testo[i][4], testo[i][5]);
-            printf ("Real     out: x1=%lg x2=%lg n_roots=%d\n\n", x1, x2, NeedsTesting);
+            printf ("Entern  b=%lg c=%lg\n", coof[i][0], coof[i][1], coof[i][2]);
+            printf ("Expected: x1=%lg x2=%lg n_roots=%d\n", solut[i][0], solut[i][1], numb[i][0]);
+            printf ("True: x1=%lg x2=%lg n_roots=%d\n\n", x1, x2, NeedsTesting);
         }
     }
 }

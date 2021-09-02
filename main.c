@@ -1,7 +1,3 @@
-#include <assert.h>
-
-#include "square_solve.h"
-
 #define EPSILON 0.00001
 
 enum NRoots_e {
@@ -18,23 +14,27 @@ enum NRoots_e {
 int main()
 {
    testQuadratic();
-   /* double a  = NAN;
-    double b  = NAN;//live journal ‰Â‰‡//sideof.lj.ru//
+   printf("             \n"
+          "a*x^2+b*x+c  \n"
+          "enter a b c: \n");
+   solver();
+
+}
+int solver()
+{
+    double a  = NAN;
+    double b  = NAN;//live journal √§√•√§√†//sideof.lj.ru//
     double c  = NAN;
     double x2 = NAN;
     double x1 = NAN;
-    printf("a*x^2+b*x+c\n"
-           "enter a b c: \n");
-    int result = scanf ("%lg %lg %lg", &a, &b, &c);
-    if (result < 3) //ÒÍ‡ÌÙ ‰ÂÊËÚ ‚ Ô‡ÏˇÚË 3 ÁÌ‡˜ÂÌËˇ
+int result = scanf ("%lg %lg %lg", &a, &b, &c);
+    if (result < 3) //√±√™√†√≠√¥ √§√•√∞√¶√®√≤ √¢ √Ø√†√¨√ø√≤√® 3 √ß√≠√†√∑√•√≠√®√ø
     {
-        printf("Did your cat walk on the keyboard?\n");   //‚ ÏÂÈÌ
+        printf("Did your cat walk on the keyboard?\n");   //√¢ √¨√•√©√≠
         //while(getchar() != '\n')
         //    printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
         return 0;
     }
-
-
     if  (isnan(a) || isnan(b) || isnan(c))
     {
         puts("Error occured");
@@ -43,7 +43,6 @@ int main()
     else
     {
         int numRoots = solve_square(a, b, c, &x1, &x2);
-
         switch(numRoots)
         {
       //  case :
@@ -53,7 +52,7 @@ int main()
         case NO_ROOTS:
             printf(" No Solution\n");
             break;
-        case ONE_ROOTS:.
+        case ONE_ROOTS:
             printf(" x= %lg\n", x1 );
             printf(" haha");
             break;
@@ -70,9 +69,8 @@ int main()
             printf(" 0");
             break;
         }
-    }*/
+    }
 }
-
 //------------------------------------------------------------------------------
 
 /*!
@@ -81,7 +79,7 @@ int main()
     \param [in] u - the compared number,
 */
 
-bool cmp_with_0(double u)
+int cmp_with_0(double u)
 {
     return fabs(u) < EPSILON;
 }
@@ -100,9 +98,9 @@ bool cmp_with_0(double u)
             if the equation has no roots
 */
 
-int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer Á‡„Û„ÎËÚ¸
+int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer √ß√†√£√≥√£√´√®√≤√º
 {
-    // ¯Ó Ú‡ÍÓÂ ‰ÂÙ‡ÈÌ˚
+    // √∏√Æ √≤√†√™√Æ√• √§√•√¥√†√©√≠√ª
     if(cmp_with_0(a))
     {
         if(cmp_with_0(b))
@@ -166,7 +164,6 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
     \param [in] a - coefficient before x ^ 2;
     \param [in] b - coefficient before x;
     \param [in] c - free member;
-
 */
  int check_for_junk_and_cats(double a, double b, double c)
  {
@@ -176,9 +173,9 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
 
         {
             int result = scanf ("%lg %lg %lg", &a, &b, &c);
-            if (result < 3) //ÒÍ‡ÌÙ ‰ÂÊËÚ ‚ Ô‡ÏˇÚË 3 ÁÌ‡˜ÂÌËˇ
+            if (result < 3) //√±√™√†√≠√¥ √§√•√∞√¶√®√≤ √¢ √Ø√†√¨√ø√≤√® 3 √ß√≠√†√∑√•√≠√®√ø
             {
-                printf(" Did your cat walk on the keyboard?\n");   //‚ ÏÂÈÌ
+                printf(" Did your cat walk on the keyboard?\n");   //√¢ √¨√•√©√≠
                 while(getchar() != '\n')
                 printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
             }
@@ -217,7 +214,7 @@ int testQuadratic()
     { -0.191584, -2.23699},           //6
     { 2, 0},                          //7
     { 0, 0},                          //8
-    { 0, 0}, //˜∏                     //9
+    { 0, 0}, //√∑¬∏                     //9
     { 0, -0.666667},                  //10
     { 0, 0},                          //11
     { -0.299533, -21.7005}            //12
@@ -244,7 +241,7 @@ int testQuadratic()
         double x1 = 0;
         double x2 = 0;
 
-        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //Á‡‰‡˛ÚÒˇ ÓÚ 0
+        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //√ß√†√§√†√æ√≤√±√ø √Æ√≤ 0
 
         if (numb[i][0] == NeedsTesting &&
             cmp_with_0 (x1 - solut[i][0]) &&
@@ -259,4 +256,5 @@ int testQuadratic()
         }
     }
 }
+
 

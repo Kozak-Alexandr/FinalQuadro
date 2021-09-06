@@ -1,10 +1,13 @@
+#include <assert.h>
+
+#include "square_solve.h"
+
 #define EPSILON 0.00001
+
 
 enum NRoots_e {
     INF_ROOTS     = 4,
     ONE_ROOTS     = 1,
-    ONE_ROOTS_TWO = 5,
-    ZERO          = 6,
     TWO_ROOTS     = 2,
     NO_ROOTS      = 0,
 };
@@ -23,16 +26,14 @@ int main()
 int solver()
 {
     double a  = NAN;
-    double b  = NAN;//live journal äåäà//sideof.lj.ru//
+    double b  = NAN;
     double c  = NAN;
     double x2 = NAN;
     double x1 = NAN;
 int result = scanf ("%lg %lg %lg", &a, &b, &c);
-    if (result < 3) //ñêàíô äåðæèò â ïàìÿòè 3 çíà÷åíèÿ
+    if (result < 3)
     {
-        printf("Did your cat walk on the keyboard?\n");   //â ìåéí
-        //while(getchar() != '\n')
-        //    printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
+        printf("Did your cat walk on the keyboard?\n");
         return 0;
     }
     if  (isnan(a) || isnan(b) || isnan(c))
@@ -45,28 +46,18 @@ int result = scanf ("%lg %lg %lg", &a, &b, &c);
         int numRoots = solve_square(a, b, c, &x1, &x2);
         switch(numRoots)
         {
-      //  case :
-        //    break;
-        //default:
-          //  break;
+
         case NO_ROOTS:
             printf(" No Solution\n");
             break;
         case ONE_ROOTS:
             printf(" x= %lg\n", x1 );
-            printf(" haha");
             break;
         case TWO_ROOTS:
             printf(" x1= %lg\n x2= %lg\n", x1, x2);
             break;
         case INF_ROOTS:
             printf(" Any number\n");
-            break;
-        case ONE_ROOTS_TWO:
-            printf(" x= %lg\n", x1);
-            break;
-        case ZERO:
-            printf(" 0");
             break;
         }
     }
@@ -98,9 +89,8 @@ int cmp_with_0(double u)
             if the equation has no roots
 */
 
-int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan isfinite NULL pointer çàãóãëèòü
+int solve_square(double a, double b, double c, double *x1, double *x2)
 {
-    // øî òàêîå äåôàéíû
     if(cmp_with_0(a))
     {
         if(cmp_with_0(b))
@@ -117,19 +107,12 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
         else
         {
             *x1 = - b / c;
-            if(cmp_with_0(c))
-            {
-                return ZERO;
-            }
-            else
-            {
-                return ONE_ROOTS;
-            }
+            return ONE_ROOTS;
         }
     }
     else
     {
-        double discr=(b * b - 4 *a * c);
+        double discr = (b * b - 4 * a * c);
         if (discr > 0)
         {
             *x1 = ( - b + sqrt(discr)) / (2 * a);
@@ -138,16 +121,16 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
         }
         else
         {
-            if(cmp_with_0(discr))//cmp_with_0
+            if(cmp_with_0(discr))
             {
-                if(cmp_with_0(c))//cmp_with_0
+                if(cmp_with_0(c))
                 {
-                   return ZERO;
+                   return INF_ROOTS;
                 }
                 else
                 {
                     *x1 = -b / (2 * c);
-                    return ONE_ROOTS_TWO;
+                    return ONE_ROOTS;
                 }
             }
             else
@@ -165,26 +148,7 @@ int solve_square(double a, double b, double c, double *x1, double *x2)  //isnan 
     \param [in] b - coefficient before x;
     \param [in] c - free member;
 */
- int check_for_junk_and_cats(double a, double b, double c)
- {
-        int   ok = 0;
-        int   result = 0;
-        while (ok == 0)
 
-        {
-            int result = scanf ("%lg %lg %lg", &a, &b, &c);
-            if (result < 3) //ñêàíô äåðæèò â ïàìÿòè 3 çíà÷åíèÿ
-            {
-                printf(" Did your cat walk on the keyboard?\n");   //â ìåéí
-                while(getchar() != '\n')
-                printf(" ^._.^ PURR PURR PURR ^._.^ PURR PURR PURR\n ");
-            }
-            else
-            {
-                ok = 1;
-            }
-        }
- }
 
 int testQuadratic()
 {
@@ -241,7 +205,7 @@ int testQuadratic()
         double x1 = 0;
         double x2 = 0;
 
-        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);        //çàäàþòñÿ îò 0
+        int NeedsTesting = solve_square (coof[i][0], coof[i][1], coof[i][2], &x1, &x2);
 
         if (numb[i][0] == NeedsTesting &&
             cmp_with_0 (x1 - solut[i][0]) &&
